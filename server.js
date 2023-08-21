@@ -1,21 +1,22 @@
-var express = require('express');
-var path = require('path');
-var fs = require('fs');
-var MongoClient = require('mongodb').MongoClient;
-var bodyParser = require('body-parser');
+import express from 'express';
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import { MongoClient } from 'mongodb';
+import bodyParser from 'body-parser';
 var app = express();
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(join(__dirname, "index.html"));
 });
 
 app.get('/profile-picture', function (req, res) {
-  var img = fs.readFileSync('profile-1.jpg');
+  var img = readFileSync('profile-1.jpg');
   res.writeHead(200, {'Content-Type': 'image/jpg' });
   res.end(img, 'binary');
 })
