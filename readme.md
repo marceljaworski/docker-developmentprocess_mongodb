@@ -23,6 +23,9 @@ start a  mongodb container
 start a  mongo-express server container
 `docker run --network mongo-network -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb -p 8081:8081 --name mongo-express mongo-express`
 
+create a user-acount database on  http://0.0.0.0:8081
+
+
  ***commands**
 `docker ps`
 `docker logs containerid`
