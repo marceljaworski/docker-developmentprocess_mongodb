@@ -12,13 +12,17 @@ Create network for mongo
 ## run mongo containers
 Run two images: mongoDB, mongo-express UI 
 
+start a  mongodb container 
 `docker run -p 27017:27017 -d -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo` 
-start a container with:
+- -d detached mode
 - opening port on the host
 - environmentals variables
 - named
 - asign network
 
+start a  mongo-express server container
+`docker run --network mongo-network -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb -p 8081:8081 --name mongo-express mongo-express`
 
- ***comands**
-`docker logs`
+ ***commands**
+`docker ps`
+`docker logs containerid`
